@@ -1,7 +1,7 @@
-import type { Player } from "rune-games-sdk";
+import type { Player, PlayerId } from "./player.type.ts";
 import type { Item } from "./item.type.ts";
 
 export interface GameState {
-  players: Player[];
+  players: Record<PlayerId, Player>;
   items: Item[];
 }

@@ -4,7 +4,7 @@ import App from "./App.tsx";
 
 Rune.initClient({
   onChange: ({ game, players, yourPlayerId }) => {
-    console.log("rune onChange");
+    // console.log("rune onChange", game);
   },
 });
 
