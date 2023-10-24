@@ -16,7 +16,7 @@
     "pixi.js": "7.3.2",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "rune-games-sdk": "4.15.7",
+    "rune-games-sdk": "4.16.0",
     "xstate": "4.38.3",
     "zustand": "4.4.4"
   },
@@ -27,6 +27,7 @@
     "@typescript-eslint/parser": "6.9.0",
     "@vitejs/plugin-react": "4.1.0",
     "eslint": "8.52.0",
+    "eslint-plugin-react": "7.33.2",
     "eslint-plugin-react-hooks": "4.6.0",
     "eslint-plugin-react-refresh": "0.4.3",
     "eslint-plugin-rune": "0.2.0",
