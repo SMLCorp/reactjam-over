@@ -1,24 +1,18 @@
 import type { RuneClient } from "rune-games-sdk/multiplayer";
+import type { GameState } from "../type/game-state/game-state.type.ts";
 
-export interface GameState {
-
-}
-
-type GameActions = {
-
-}
+interface GameActions {}
 
 declare global {
-  const Rune: RuneClient<GameState, GameActions>
+  // @ts-expect-error
+  const Rune: RuneClient<GameState, GameActions>;
 }
 
 Rune.initLogic({
   minPlayers: 1,
   maxPlayers: 2,
   setup: (): GameState => {
-    return {}
+    return {items: [], players: []};
   },
-  actions: {
-
-  }
-})
+  actions: {},
+});

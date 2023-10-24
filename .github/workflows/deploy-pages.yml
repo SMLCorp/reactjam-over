@@ -24,8 +24,8 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
-          cache: 'pnpm'
-          node-version-file: '.nvmrc'
+          cache: "pnpm"
+          node-version-file: ".nvmrc"
 
       #  See line :18
       # - name: Enable Node package managers
