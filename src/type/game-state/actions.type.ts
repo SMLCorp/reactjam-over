@@ -1,2 +1,2 @@
-export type GameActions = Record<string, (params?: any) => void >
+export type GameActions = Record<string, (params?: unknown) => void >
 
