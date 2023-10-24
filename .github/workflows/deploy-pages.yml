@@ -47,9 +47,3 @@ jobs:
       - name: Build
         shell: bash
         run: pnpm build
-
-      - name: deploy to github pages 🚀
-        uses: JamesIves/github-pages-deploy-action@4.1.3
-        with:
-          branch: gh-pages # The branch the action should deploy to.
-          folder: dist # The folder the action should deploy.
