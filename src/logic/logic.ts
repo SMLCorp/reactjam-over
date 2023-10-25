@@ -34,7 +34,14 @@ Rune.initLogic({
       ),
     };
   },
-  // update: ({ game }) => {},
+  update: ({game}) => {
+    Object.values(game.players).forEach(player => {
+      if (player.nextPosition) {
+        player.position = player.nextPosition
+        player.nextPosition = undefined
+      }
+    })
+  },
   actions: {
     dropItem,
     spawnItem,

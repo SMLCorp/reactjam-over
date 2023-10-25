@@ -13,5 +13,5 @@ export function movePlayer(
   if (player == null) {
     throw Error("");
   }
-  player.position = getPlayerNewPosition(player, game.map, direction);
+  player.nextPosition = getPlayerNewPosition(player, game.map, direction);
 }

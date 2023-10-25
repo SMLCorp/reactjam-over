@@ -8,6 +8,7 @@ export type PlayerId = Brand<string, "PlayerId">;
 export interface Player extends PlayerRune {
   playerId: PlayerId;
   position: [number, number];
+  nextPosition?: [number, number];
   direction: PlayerDirection;
   action: PlayerAction;
 }

@@ -15,7 +15,11 @@ function App() {
   useEffect(() => {
     Rune.initClient({
       // onChange: ({ game, players, yourPlayerId }) => {
-      onChange: ({ game, yourPlayerId }) => {
+      onChange: ({ game, yourPlayerId, action }) => {
+        if (action != null) {
+          // skip action
+          return
+        }
         console.log("rune onChange", game);
         setGame(game);
         setPlayerId(yourPlayerId as PlayerId);
