@@ -10,7 +10,12 @@ module.exports = {
     "plugin:react-hooks/recommended",
     "plugin:rune/recommended",
   ],
-  ignorePatterns: ["dist", ".eslintrc.cjs", "**/*.typegen.ts", "vite.config.ts"],
+  ignorePatterns: [
+    "dist",
+    ".eslintrc.cjs",
+    "**/*.typegen.ts",
+    "vite.config.ts",
+  ],
   parser: "@typescript-eslint/parser",
   parserOptions: {
     ecmaVersion: "latest",

@@ -6,5 +6,5 @@ export const playerJoined = (
   playerId: string,
   { game }: { game: GameState },
 ): void => {
-  game.players[playerId as PlayerId] = getDefaultPlayer(playerId as PlayerId)
+  game.players[playerId as PlayerId] = getDefaultPlayer(playerId as PlayerId);
 };

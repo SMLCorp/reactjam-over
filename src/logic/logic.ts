@@ -6,8 +6,9 @@ import { playerLeft } from "./events/player-left.ts";
 import type { PlayerId } from "../type/game-state/player.type.ts";
 import { getDefaultPlayer } from "../helpers/player.ts";
 import { dropItem } from "./actions/drop-item.ts";
-import {spawnItem} from "./actions/spawn-item.ts";
-import {deleteItem} from "./actions/delete-item.ts";
+import { spawnItem } from "./actions/spawn-item.ts";
+import { deleteItem } from "./actions/delete-item.ts";
+import { movePlayer } from "./actions/move-player.ts";
 
 declare global {
   const Rune: RuneClient<GameState, GameActions>;
@@ -21,7 +22,7 @@ Rune.initLogic({
     return {
       map: {
         spawners: {},
-        trash: {}
+        trash: {},
       },
       items: {},
       players: playerIds.reduce<GameState["players"]>(
@@ -30,14 +31,15 @@ Rune.initLogic({
           [playerId]: getDefaultPlayer(playerId as PlayerId),
         }),
         {},
-      )
+      ),
     };
   },
   // update: ({ game }) => {},
   actions: {
     dropItem,
     spawnItem,
-    deleteItem
+    deleteItem,
+    movePlayer,
   },
   events: {
     playerJoined,

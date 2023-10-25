@@ -1,7 +1,7 @@
 import type { Player, PlayerId } from "../type/game-state/player.type";
 
 export const getDefaultPlayer = (playerId: PlayerId): Player => ({
-  playerId: playerId ,
+  playerId: playerId,
   displayName: "toto",
   avatarUrl:
     "https://unsplash.com/photos/closeup-photography-of-woman-smiling-mEZ3PoFGs_k",

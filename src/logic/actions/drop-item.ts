@@ -1,8 +1,7 @@
-
-import type {ActionContext} from "rune-games-sdk";
+import type { ActionContext } from "rune-games-sdk";
 import type { GameState } from "../../type/game-state/game-state.type.ts";
-import type {ItemId} from "../../type/game-state/item.type.ts";
-import type {PlayerId} from "../../type/game-state/player.type.ts";
+import type { ItemId } from "../../type/game-state/item.type.ts";
+import type { PlayerId } from "../../type/game-state/player.type.ts";
 
 export function dropItem(
   itemId: ItemId,
