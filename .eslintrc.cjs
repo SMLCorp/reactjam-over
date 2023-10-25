@@ -29,5 +29,6 @@ module.exports = {
       "warn",
       { allowConstantExport: true },
     ],
+    "@typescript-eslint/no-dynamic-delete": "off",
   },
 };

@@ -8,10 +8,10 @@ export function movePlayer(
   direction: PlayerDirection,
   { game, playerId }: ActionContext<GameState>,
 ): void {
-  // check if player exist
   const player = game.players[playerId as PlayerId];
-  if (player == null) {
+  if (!player) {
     throw Error("");
   }
+
   player.nextPosition = getPlayerNewPosition(player, game.map, direction);
 }

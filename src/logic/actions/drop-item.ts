@@ -7,14 +7,13 @@ export function dropItem(
   itemId: ItemId,
   { game, playerId }: ActionContext<GameState>,
 ): void {
-  // check if item exit
   const item = game.items[itemId];
-  if (item == null) {
+  if (!item) {
     throw Error("");
   }
-  // check if player exist
+
   const player = game.players[playerId as PlayerId];
-  if (player == null) {
+  if (!player) {
     throw Error("");
   }
 

@@ -34,13 +34,15 @@ Rune.initLogic({
       ),
     };
   },
-  update: ({game}) => {
-    Object.values(game.players).forEach(player => {
-      if (player.nextPosition) {
-        player.position = player.nextPosition
-        player.nextPosition = undefined
+  update: ({ game }) => {
+    Object.values(game.players).forEach((player) => {
+      if (player) {
+        if (player.nextPosition) {
+          player.position = player.nextPosition;
+          delete player.nextPosition;
+        }
       }
-    })
+    });
   },
   actions: {
     dropItem,

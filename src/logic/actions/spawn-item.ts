@@ -8,14 +8,13 @@ export function spawnItem(
   spawnerId: SpawnerId,
   { game, playerId }: ActionContext<GameState>,
 ): void {
-  // check if item exit
   const spawner = game.map.spawners[spawnerId];
-  if (spawner == null) {
+  if (!spawner) {
     throw Error("");
   }
-  // check if player exist
+
   const player = game.players[playerId as PlayerId];
-  if (player == null) {
+  if (!player) {
     throw Error("");
   }
 

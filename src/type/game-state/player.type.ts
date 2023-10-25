@@ -1,5 +1,5 @@
 import type { Player as PlayerRune } from "rune-games-sdk";
-import type { Brand } from "../brand.ts";
+import type { Brand } from "../utils/brand.ts";
 import type { ItemId } from "./item.type.ts";
 import type { PlayerDirection } from "../utils/direction.type.ts";
 

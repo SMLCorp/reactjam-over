@@ -5,7 +5,5 @@ export const playerLeft = (
   playerId: string,
   { game }: { game: GameState },
 ): void => {
-  // handle players items
-  /* eslint-disable @typescript-eslint/no-dynamic-delete */
   delete game.players[playerId as PlayerId];
 };

@@ -1,4 +1,4 @@
-import type { Brand } from "../brand";
+import type { Brand } from "../utils/brand";
 
 export type ItemId = Brand<string, "ItemId">;
 

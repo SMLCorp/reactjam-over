@@ -1,4 +1,4 @@
-import type { Brand } from "../brand.ts";
+import type { Brand } from "../utils/brand.ts";
 import type { ItemType } from "./item.type.ts";
 import type { FurnitureDirection } from "../utils/direction.type.ts";
 

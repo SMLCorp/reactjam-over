@@ -1,4 +1,4 @@
-import type { Brand } from "../brand.ts";
+import type { Brand } from "../utils/brand.ts";
 
 export type TrashId = Brand<string, "TrashId">;
 
