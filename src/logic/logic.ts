@@ -9,6 +9,7 @@ import { dropItem } from "./actions/drop-item.ts";
 import { spawnItem } from "./actions/spawn-item.ts";
 import { deleteItem } from "./actions/delete-item.ts";
 import { movePlayer } from "./actions/move-player.ts";
+import { getDefaultMap } from "../helpers/map.ts";
 
 declare global {
   const Rune: RuneClient<GameState, GameActions>;
@@ -20,10 +21,7 @@ Rune.initLogic({
   updatesPerSecond: 1,
   setup: (playerIds): GameState => {
     return {
-      map: {
-        spawners: {},
-        trash: {},
-      },
+      map: getDefaultMap(),
       items: {},
       players: playerIds.reduce<GameState["players"]>(
         (acc, playerId) => ({

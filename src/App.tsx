@@ -44,19 +44,33 @@ function App() {
         />
       </Stage>
       <div style={{ position: "absolute", top: height / 2 + 20, left: 20 }}>
-        <button onClick={(): void => { Rune.actions.dropItem("abc" as ItemId); }}>
+        <button
+          onClick={(): void => {
+            Rune.actions.dropItem("abc" as ItemId);
+          }}
+        >
           Drop Item
         </button>
         <button
-          onClick={(): void => { Rune.actions.spawnItem("abc" as SpawnerId); }}
+          onClick={(): void => {
+            Rune.actions.spawnItem("abc" as SpawnerId);
+          }}
         >
           Spawn Item
         </button>
-        <button onClick={(): void => { Rune.actions.deleteItem("abc" as TrashId); }}>
+        <button
+          onClick={(): void => {
+            Rune.actions.deleteItem("abc" as TrashId);
+          }}
+        >
           Delete Item
         </button>
 
-        <button onClick={(): void => { Rune.actions.movePlayer("DOWN"); }}>
+        <button
+          onClick={(): void => {
+            Rune.actions.movePlayer("DOWN");
+          }}
+        >
           Move Down
         </button>
       </div>
