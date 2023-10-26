@@ -18,7 +18,7 @@ declare global {
 Rune.initLogic({
   minPlayers: 1,
   maxPlayers: 2,
-  updatesPerSecond: 1,
+  updatesPerSecond: 30,
   setup: (playerIds): GameState => {
     return {
       map: getDefaultMap(),
@@ -36,6 +36,7 @@ Rune.initLogic({
     Object.values(game.players).forEach((player) => {
       if (player) {
         if (player.nextPosition) {
+          // refactor calculate new position here -> front can send only a change of direction instead of X same movement
           player.position = player.nextPosition;
           delete player.nextPosition;
         }

@@ -6,7 +6,7 @@ export const getDefaultPlayer = (playerId: PlayerId): Player => ({
   avatarUrl:
     "https://unsplash.com/photos/closeup-photography-of-woman-smiling-mEZ3PoFGs_k",
   position: [0, 0],
-  direction: "UP",
+  direction: {x: 0, y: 0},
   action: {
     name: "idle",
   },
