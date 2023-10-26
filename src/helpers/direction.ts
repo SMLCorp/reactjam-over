@@ -1,7 +1,11 @@
 import type { PlayerDirection } from "../type/utils/direction.type";
 
-export const normalizeDirection = ({x, y}: PlayerDirection): PlayerDirection => {
-  let newX = x, newY = y;
+export const normalizeDirection = ({
+  x,
+  y,
+}: PlayerDirection): PlayerDirection => {
+  let newX = x,
+    newY = y;
 
   if (x < -1) newX = -1;
   if (x > 1) newX = 1;
@@ -10,6 +14,6 @@ export const normalizeDirection = ({x, y}: PlayerDirection): PlayerDirection => 
 
   return {
     x: newX,
-    y: newY
-  }
-}
+    y: newY,
+  };
+};

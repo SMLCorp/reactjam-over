@@ -1,4 +1,3 @@
-
 export const PLAYER_AXE_SPEED = 6;
 // export const PLAYER_DIAGONAL_SPEED = 4;
 

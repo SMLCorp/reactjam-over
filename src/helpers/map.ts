@@ -3,13 +3,11 @@ import type { GameMap } from "../type/game-state/game-map.type.ts";
 import { PLAYER_AXE_SPEED } from "../utils/constants.ts";
 import { furnitureFactory } from "./furniture.ts";
 
-export function getPlayerNewPosition(
-  player: Player,
-): [number, number] {
-  const newPlayerPosition = sumCoordinates(
-    player.position,
-    [player.direction.x * PLAYER_AXE_SPEED, player.direction.y * PLAYER_AXE_SPEED]
-  );
+export function getPlayerNewPosition(player: Player): [number, number] {
+  const newPlayerPosition = sumCoordinates(player.position, [
+    player.direction.x * PLAYER_AXE_SPEED,
+    player.direction.y * PLAYER_AXE_SPEED,
+  ]);
 
   // TODO check Collision
 
