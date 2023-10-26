@@ -19,24 +19,12 @@ function App() {
   const [gameState, setGame] = useState<GameState | undefined>(undefined);
   const [playerId, setPlayerId] = useState<PlayerId | undefined>(undefined);
   const [direction, setDirection] = useReducer(movementReducer, { x: 0, y: 0 });
-  // refactor move state to a reducer to make change easier
-  const [joystickPosX, setJoystickPosX] = useState<number>(0);
-  const [joystickPosY, setJoystickPosY] = useState<number>(0);
+  const [joystickDirection, setJoystickDirection] = useState({ x: 0, y: 0 });
 
-  const handleMove = (event: IJoystickUpdateEvent): void => {
-    // refactor change joystickPosX & PosY value only if it change threshold >< 0
-    setJoystickPosX(event.x ?? 0);
-    setJoystickPosY(event.y ?? 0);
-  };
+  const { width, height } = useWindowSize();
 
-  const handleStop = (): void => {
-    setJoystickPosX(0);
-    setJoystickPosY(0);
-  };
-
-  useEffect(() => {
-    console.log("joystick moved");
-  }, [joystickPosY, joystickPosX]);
+  const playerPos = gameState?.players[playerId ?? ("" as PlayerId)]
+    ?.position ?? [0, 0];
 
   useEffect(() => {
     Rune.initClient({
@@ -51,15 +39,40 @@ function App() {
     });
   }, []);
 
+  const handleMove = ({ x, y }: IJoystickUpdateEvent): void => {
+    const normalizedX = (x ?? 0) > 0.5 ? 1 : (x ?? 0) < -0.5 ? -1 : 0;
+    const normalizedY = (y ?? 0) > 0.5 ? -1 : (y ?? 0) < -0.5 ? 1 : 0;
+
+    if (normalizedX !== joystickDirection.x) {
+      setJoystickDirection({ x: normalizedX, y: joystickDirection.y });
+    }
+    if (normalizedY !== joystickDirection.y) {
+      setJoystickDirection({ x: joystickDirection.x, y: normalizedY });
+    }
+  };
+
+  const handleStop = (): void => {
+    setJoystickDirection({ x: 0, y: 0 });
+  };
+
+  useEffect(() => {
+    setDirection({
+      type: "joystick",
+      joystickDirection,
+    });
+  }, [joystickDirection, joystickDirection.x, joystickDirection.y]);
+
   useEffect(() => {
     Rune.actions.movePlayer(direction);
   }, [direction]);
 
-  // handle player movement
-  // refactor only send this event when key is down, don't do it when it's staying pressed, it send infinity event to server
-  useKey(movementCondition, ({ key }) => {
-    handleMovement(key, "keydown", setDirection);
-  });
+  useKey(
+    movementCondition,
+    ({ key }) => {
+      handleMovement(key, "keydown", setDirection);
+    },
+    { event: "keydown" },
+  );
 
   useKey(
     movementCondition,
@@ -68,11 +81,6 @@ function App() {
     },
     { event: "keyup" },
   );
-
-  const { width, height } = useWindowSize();
-
-  const playerPos = gameState?.players[playerId ?? ("" as PlayerId)]
-    ?.position ?? [0, 0];
 
   return (
     <>
@@ -107,7 +115,7 @@ function App() {
           Delete Item
         </button>
         <Joystick
-          pos={{ x: joystickPosX, y: joystickPosY }}
+          pos={joystickDirection}
           size={100}
           sticky={false}
           baseColor="red"

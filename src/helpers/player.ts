@@ -11,3 +11,4 @@ export const getDefaultPlayer = (playerId: PlayerId): Player => ({
     name: "idle",
   },
 });
+

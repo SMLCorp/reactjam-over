@@ -9,7 +9,7 @@ import { dropItem } from "./actions/drop-item.ts";
 import { spawnItem } from "./actions/spawn-item.ts";
 import { deleteItem } from "./actions/delete-item.ts";
 import { movePlayer } from "./actions/move-player.ts";
-import { getDefaultMap } from "../helpers/map.ts";
+import { getDefaultMap, getPlayerNewPosition } from "../helpers/map.ts";
 
 declare global {
   const Rune: RuneClient<GameState, GameActions>;
@@ -35,11 +35,7 @@ Rune.initLogic({
   update: ({ game }) => {
     Object.values(game.players).forEach((player) => {
       if (player) {
-        if (player.nextPosition) {
-          // refactor calculate new position here -> front can send only a change of direction instead of X same movement
-          player.position = player.nextPosition;
-          delete player.nextPosition;
-        }
+        player.position = getPlayerNewPosition(player);
       }
     });
   },
