@@ -21,7 +21,7 @@ dependencies:
     specifier: 18.2.0
     version: 18.2.0(react@18.2.0)
   react-joystick-component:
-    specifier: ^6.2.1
+    specifier: 6.2.1
     version: 6.2.1(react-dom@18.2.0)(react@18.2.0)
   react-use:
     specifier: 17.4.0
