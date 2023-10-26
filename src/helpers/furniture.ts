@@ -49,6 +49,7 @@ export class SpawnerFactory extends FurnitureFactory {
       ...this.genFurniture(position, direction),
       spawnType: spawnType,
       id: crypto.randomUUID() as SpawnerId,
+      asset: `src/assets/furniture/spawner-${spawnType}.png`
     };
   }
 
@@ -61,6 +62,7 @@ export class SpawnerFactory extends FurnitureFactory {
       ...this.genFurnitureNextTo(where, furniture),
       spawnType: spawnType,
       id: crypto.randomUUID() as SpawnerId,
+      asset: `src/assets/furniture/spawner-${spawnType}.png`
     };
   }
 }
@@ -73,6 +75,7 @@ export class DefaultFurnitureFactory extends FurnitureFactory {
     return {
       ...this.genFurniture(position, direction),
       id: crypto.randomUUID() as FurnitureId,
+      asset: "src/assets/furniture/default-furniture.png"
     };
   }
 
@@ -80,6 +83,7 @@ export class DefaultFurnitureFactory extends FurnitureFactory {
     return {
       ...this.genFurnitureNextTo(where, furniture),
       id: crypto.randomUUID() as FurnitureId,
+      asset: "src/assets/furniture/default-furniture.png"
     };
   }
 }

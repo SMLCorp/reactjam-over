@@ -6,7 +6,7 @@ import type { SpawnerId } from "./type/game-state/spawner.type";
 import type { TrashId } from "./type/game-state/trash.type";
 import type { GameState } from "./type/game-state/game-state.type.ts";
 import type { PlayerId } from "./type/game-state/player.type.ts";
-import { useEffect, useReducer, useState } from "react";
+import {useEffect, useMemo, useReducer, useState} from "react";
 import {
   handleMovement,
   movementCondition,
@@ -14,6 +14,7 @@ import {
 } from "./utils/movement.ts";
 import { Joystick } from "react-joystick-component";
 import type { IJoystickUpdateEvent } from "react-joystick-component/src/Joystick.tsx";
+import {GameMap} from "./components/game-map.component.tsx";
 
 function App() {
   const [gameState, setGame] = useState<GameState | undefined>(undefined);
@@ -22,6 +23,8 @@ function App() {
   const [joystickDirection, setJoystickDirection] = useState({ x: 0, y: 0 });
 
   const { width, height } = useWindowSize();
+
+  const scale = useMemo(() => Math.min(width / (gameState?.map.dimensions[0] ?? width), height / (gameState?.map.dimensions[1] ?? height)), [width, height, gameState])
 
   const playerPos = gameState?.players[playerId ?? ("" as PlayerId)]
     ?.position ?? [0, 0];
@@ -82,13 +85,17 @@ function App() {
     { event: "keyup" },
   );
 
+  const gameMap = gameState?.map ? <GameMap scale={scale} gameMap={gameState.map}/> : <></>
+
   return (
     <>
-      <Stage width={width / 2} height={height / 2}>
+      <Stage width={width} height={height}>
+        {gameMap}
         <Sprite
           x={playerPos[0]}
           y={playerPos[1]}
           anchor={0.5}
+          scale={scale}
           image="https://pixijs.com/assets/bunny.png"
         />
       </Stage>

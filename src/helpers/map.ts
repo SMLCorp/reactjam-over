@@ -30,7 +30,7 @@ export function getDefaultMap(): GameMap {
   const spawner = furnitureFactory.spawner.genNextTo(
     "RIGHT",
     furniture2,
-    "tomato",
+    "body",
   );
   const furniture3 = furnitureFactory.defaultFurniture.genNextTo(
     "RIGHT",
@@ -45,10 +45,6 @@ export function getDefaultMap(): GameMap {
     "RIGHT",
     furniture4,
   );
-  const furniture6 = furnitureFactory.defaultFurniture.genNextTo(
-    "RIGHT",
-    furniture5,
-  );
 
   const furnitureList = [
     furniture1,
@@ -56,7 +52,6 @@ export function getDefaultMap(): GameMap {
     furniture3,
     furniture4,
     furniture5,
-    furniture6,
   ];
 
   const spawnerList = [spawner];
@@ -67,6 +62,6 @@ export function getDefaultMap(): GameMap {
     furniture: furnitureList.reduce((acc, f) => ({ ...acc, [f.id]: f }), {}),
     spawners: spawnerList.reduce((acc, f) => ({ ...acc, [f.id]: f }), {}),
     trash: trashList.reduce((acc, f) => ({ ...acc, [f.id]: f }), {}),
-    dimensions: [512, 256],
+    dimensions: [448, 256],
   };
 }
