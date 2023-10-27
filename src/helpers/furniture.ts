@@ -96,6 +96,7 @@ export class TrashFactory extends FurnitureFactory {
     return {
       ...this.genFurniture(position, direction),
       id: crypto.randomUUID() as TrashId,
+      asset: "src/assets/furniture/furniture-trash.png"
     };
   }
 
@@ -103,6 +104,7 @@ export class TrashFactory extends FurnitureFactory {
     return {
       ...this.genFurnitureNextTo(where, furniture),
       id: crypto.randomUUID() as TrashId,
+      asset: "src/assets/furniture/furniture-trash.png"
     };
   }
 }
